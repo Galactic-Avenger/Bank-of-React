@@ -1,27 +1,26 @@
-# bank-of-react-starter-code
-This repository is the starter code for Assignment 3 - Bank of React.
+# Bank-of-React Project
+This is the main repository for the Bank of React Project.
+
+## Project-Overview
+
+
+
+## Team Members
+- **Abdulla Saleh** - GitHub: @Galactic-Avenger
+- **Khandakar Wahiduzzaman** - GitHub: @KhandakarWahiduzzaman
+- **Leo Chen** - GitHub: @lc6003
+
+  
 
 ### Live Link 
-[Website link](https://johnnylaicode.github.io/bank-of-react-starter-code/)
+[Website link](https://Galactic-Avenger.github.io/Bank-of-React/)
+
+
+
+
 
 ----------
-### 1. Use the following process to ***import*** the Assignment 3 starter code repository to your GitHub account as your starter codebase
-1.	Log on to GitHub
-2.	Click on the + sign in the top right corner (next to the user icon)
-3.	In the dropdown menu, select "Import repository"
-4.	A new page will open
-5.	In "Your old repository’s clone URL" field, enter: `https://github.com/johnnylaicode/bank-of-react-starter-code`
-6.	In "Your new repository details" field, enter your own repository name (e.g., "assignment-3")
-7.	Click on the "Begin import" button to start the process
-8.	After the process completed, your new "assignment-3" repository is created – as a completely independent codebase
-9.	From this point on, you can clone your new repository, make changes, create feature branches, and create/merge pull requests
-
-----------
-### 2. Use the information below to ***clone*** the starter codebase to your local machine
-After creating the starter codebase "assignment-3" repository on GitHub (see above), you can clone it to your local machine. The instructions on how to clone a GitHub repository are available at this [link](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
-
-----------
-### 3. Use the following commands to install dependencies and run the application
+### 1. Use the following commands to install dependencies and run the application
 
 - First, run this command to install dependencies: ```npm install```
 - Next, run this command to start the React application: ```npm start```
@@ -34,10 +33,10 @@ npm install react-scripts@latest --legacy-peer-deps
 **Afterward, you can run the ```npm start``` command to start the React application.**
 
 ----------
-### 4. Set up and deploy a React application to GitHub Pages
+### 2. Set up and deploy a React application to GitHub Pages
+
 #### 1. Create a React Application
 1. If you don't already have an existing React application on your local machine, you can create a new React application (e.g., "my-react-app").
-
     Optionally, you can clone the "bank-of-react-starter-code" repository to your local machine and re-name it "my-react-app."
 2. Start a terminal (e.g., Git Bash) on your local machine.
 3. Go to the "my-react-app" folder.

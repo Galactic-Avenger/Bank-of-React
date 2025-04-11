@@ -18,9 +18,9 @@ class App extends Component {
   constructor() {  // Create and initialize state
     super(); 
     this.state = {
-      accountBalance: 1234567.89,
-      creditList: [],
-      debitList: [],
+      accountBalance: 0,
+      credits: [],
+      debits: [],
       currentUser: {
         userName: 'Joe Smith',
         memberSince: '11/22/99',
@@ -38,7 +38,9 @@ class App extends Component {
 
       this.setState({
         credits: creditsData,
-        debits: debitsData,
+        debits: debitsData
+      }, () => {
+        this.updateAccountBalance();
       });
     } catch (err) {
       console.error('Error fetching data:', err);
@@ -47,28 +49,25 @@ class App extends Component {
 
   updateAccountBalance = () => {
     const { credits, debits } = this.state;
-    const totalCredits = credits.reduce((acc, credit) => acc + credit.amount, 0);
-    const totalDebits = debits.reduce((acc, debit) => acc + debit.account, 0);
 
-    this.setState({ accountBalance: totalCredits - totalDebits });
+    const totalCredits = credits && credits.length ?
+      credits.reduce((acc, credit) => acc + parseFloat(credit.amount), 0) : 0;
+
+    const totalDebits = debits && debits.length ?
+      debits.reduce((acc, debit) => acc + parseFloat(debit.amount), 0) : 0;
+
+    this.setState({ accountBalance: totalCredits - totalDebits});
   }
 
   addCredit = (newCredit) => {
     const updatedCredits = [...this.state.credits, newCredit];
-    const updatedBalance = parseFloat(this.state.accountBalance) + parseFloat(newCredit.amount);
 
-    this.setState(
-      { credits: updatedCredits, accountBalance: updatedBalance }
-    );
+    this.setState({ credits: updatedCredits }, this.updateAccountBalance);
   }
 
   addDebit = (newDebit) => {
     const updatedDebits = [...this.state.debits, newDebit];
-    const updatedBalance = parseFloat(this.state.accountBalance) - parseFloat(newDebit.amount);
-
-    this.setState(
-      { debits: updatedDebits, accountBalance: updatedBalance}
-    );
+    this.setState({ debits: updatedDebits }, this.updateAccountBalance);
   }
 
   // Update state's currentUser (userName) after "Log In" button is clicked
@@ -86,8 +85,8 @@ class App extends Component {
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />
     )
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
-    const CreditsComponent = () => (<Credits credits={this.state.creditList} addCredit={this.addCredit} accountBalance={this.state.accountBalance} />) 
-    const DebitsComponent = () => (<Debits debits={this.state.debitList} addDebit={this.addDebit} accountBalance={this.state.accountBalance} />) 
+    const CreditsComponent = () => (<Credits credits={this.state.credits} addCredit={this.addCredit} accountBalance={this.state.accountBalance} />) 
+    const DebitsComponent = () => (<Debits debits={this.state.debits} addDebit={this.addDebit} accountBalance={this.state.accountBalance} />) 
 
     // Important: Include the "basename" in Router, which is needed for deploying the React app to GitHub Pages
     return (

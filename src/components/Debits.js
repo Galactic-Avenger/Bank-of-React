@@ -40,13 +40,11 @@ const Debits = (props) => {
 
       {/* Display current account balance, rounded to 2 decimals */}
       <h3>Account Balance: ${props.accountBalance.toFixed(2)}</h3>
-
-      <h2>Your Debits</h2>
+      
       <ul>
         {debitsView()}
       </ul>
 
-      <h2>Add a New Debit</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Description: </label>

@@ -5,11 +5,12 @@ The AccountBalance component displays account balance. It is included in other p
 ==================================================*/
 import React, {Component} from 'react';
 
+// Simple component to show the user's current balance
 class AccountBalance extends Component {
-  // Display account balance
   render() {
     return (
       <div>
+        {/* Format balance to 2 decimal places */}
         Balance: ${this.props.accountBalance.toFixed(2)}
       </div>
     );

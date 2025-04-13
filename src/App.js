@@ -28,14 +28,15 @@ class App extends Component {
     };
   }
 
+  // Fetch credit and debit transactions from APIs
   async componentDidMount() {
     try {
       const creditsResponse = await fetch('https://johnnylaicode.github.io/api/credits.json');
-      const creditsData = await debitsResponse.json();
+      const creditsData = await creditsResponse.json();
 
       const debitsResponse = await fetch('https://johnnylaicode.github.io/api/debits.json');
       const debitsData = await debitsResponse.json();
-
+       // Update state and recalculate balance
       this.setState({
         credits: creditsData,
         debits: debitsData
@@ -47,6 +48,7 @@ class App extends Component {
     }
   }
 
+  // Calculate net balance = credits - debits
   updateAccountBalance = () => {
     const { credits, debits } = this.state;
 
@@ -59,12 +61,14 @@ class App extends Component {
     this.setState({ accountBalance: totalCredits - totalDebits});
   }
 
+  // Append new credit to the list
   addCredit = (newCredit) => {
     const updatedCredits = [...this.state.credits, newCredit];
 
     this.setState({ credits: updatedCredits }, this.updateAccountBalance);
   }
 
+  // Append new debit to the list
   addDebit = (newDebit) => {
     const updatedDebits = [...this.state.debits, newDebit];
     this.setState({ debits: updatedDebits }, this.updateAccountBalance);

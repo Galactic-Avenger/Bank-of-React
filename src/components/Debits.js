@@ -6,8 +6,9 @@ Note: You need to work on this file for the Assignment.
 ==================================================*/
 import {Link} from 'react-router-dom';
 
+// Component to display and add new debit transactions
 const Debits = (props) => {
-  // Helper to render the list of debit items
+  // Helper function to render the list of debit items
   const debitsView = () => {
     return props.debits.map((debit, index) => {
       const date = debit.date.slice(0,10);  // Extract 'yyyy-mm-dd'

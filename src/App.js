@@ -78,7 +78,7 @@ class App extends Component {
   mockLogIn = (logInInfo) => {  
     const newUser = {...this.state.currentUser};
     newUser.userName = logInInfo.userName;
-    this.setState({currentUser: newUser})
+    this.setState({currentUser: newUser});
   }
 
   // Create Routes and React elements to be rendered using React components

@@ -28,7 +28,7 @@ const Debits = (props) => {
     e.preventDefault();
     const newDebit = {
       description: e.target.description.value,
-      amount: parseFloat(e.target.amount.value),
+      amount: Math.round(parseFloat(e.target.amount.value) * 100) / 100,
       date: new Date().toISOString()
     };
     props.addDebit(newDebit);
@@ -53,7 +53,7 @@ const Debits = (props) => {
         </div>
         <div>
           <label>Amount: </label>
-          <input type="number" step="0.01" name="amount" placeholder="e.g. 50" required />
+          <input type="number" step="any" name="amount" placeholder="e.g. 50" required />
         </div>
         <button type="submit">Add Debit</button>
       </form>

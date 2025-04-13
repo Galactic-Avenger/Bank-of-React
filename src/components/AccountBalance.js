@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 class AccountBalance extends Component {
   render() {
     return (
-      <div>
+      <div className="balance-display">
         {/* Format balance to 2 decimal places */}
         Balance: ${this.props.accountBalance.toFixed(2)}
       </div>

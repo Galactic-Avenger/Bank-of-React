@@ -13,7 +13,7 @@ const Credits = (props) => {
     e.preventDefault();
     const newCredit = {
       description: e.target.description.value,
-      amount: parseFloat(e.target.amount.value),
+      amount: Math.round(parseFloat(e.target.amount.value) * 100) / 100, 
       date: new Date().toISOString(), // Auto-generate timestamp
     };
     props.addCredit(newCredit);  // Call parent function
@@ -47,11 +47,11 @@ const Credits = (props) => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Description:</label>
-          <input type="text" name="description" required />
+          <input type="text" name="description" placeholder="e.g. Groceries" required />
         </div>
         <div>
           <label>Amount:</label>
-          <input type="number" step="0.01" name="amount" required />
+          <input type="number" step="any" name="amount" placeholder="e.g. 50" required />
         </div>
         <button type="submit">Add Credit</button>
       </form>

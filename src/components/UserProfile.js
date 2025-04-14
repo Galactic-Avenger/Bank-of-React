@@ -12,7 +12,8 @@ class UserProfile extends Component {
     return (
       <div>
         <h1>User Profile</h1>
-
+        {/* Greeting message */}
+        <h2>{this.props.greeting}, {this.props.userName}!</h2>
         <div>Username: {this.props.userName}</div>
         <div>Member Since: {this.props.memberSince}</div>
         <br/>

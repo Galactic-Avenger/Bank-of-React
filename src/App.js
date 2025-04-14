@@ -5,7 +5,7 @@ This is the top-level component of the app.
 It contains the top-level state.
 ==================================================*/
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 
 // Import other components
@@ -29,14 +29,15 @@ class App extends Component {
     };
   }
 
+  // Fetch credit and debit transactions from APIs
   async componentDidMount() {
     try {
       const creditsResponse = await fetch('https://johnnylaicode.github.io/api/credits.json');
-      const creditsData = await debitsResponse.json();
+      const creditsData = await creditsResponse.json();
 
       const debitsResponse = await fetch('https://johnnylaicode.github.io/api/debits.json');
       const debitsData = await debitsResponse.json();
-
+       // Update state and recalculate balance
       this.setState({
         credits: creditsData,
         debits: debitsData
@@ -48,6 +49,7 @@ class App extends Component {
     }
   }
 
+  // Calculate net balance = credits - debits
   updateAccountBalance = () => {
     const { credits, debits } = this.state;
 
@@ -60,12 +62,14 @@ class App extends Component {
     this.setState({ accountBalance: totalCredits - totalDebits});
   }
 
+  // Append new credit to the list
   addCredit = (newCredit) => {
     const updatedCredits = [...this.state.credits, newCredit];
 
     this.setState({ credits: updatedCredits }, this.updateAccountBalance);
   }
 
+  // Append new debit to the list
   addDebit = (newDebit) => {
     const updatedDebits = [...this.state.debits, newDebit];
     this.setState({ debits: updatedDebits }, this.updateAccountBalance);
@@ -75,7 +79,7 @@ class App extends Component {
   mockLogIn = (logInInfo) => {  
     const newUser = {...this.state.currentUser};
     newUser.userName = logInInfo.userName;
-    this.setState({currentUser: newUser})
+    this.setState({currentUser: newUser});
   }
 
   // Get the current time and return a greeting based on the time of day
@@ -108,7 +112,18 @@ class App extends Component {
     // Important: Include the "basename" in Router, which is needed for deploying the React app to GitHub Pages
     return (
       <Router basename="/Bank-of-React">
-        <div>
+        <div className="App">
+
+          {/* Nav Bar for navigation */}
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/credits">Credits</Link>
+          <Link to="/debits">Debits</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/userProfile">Profile</Link>
+        </nav>
+
+        {/* Routes */}
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path="/userProfile" render={UserProfileComponent}/>
           <Route exact path="/login" render={LogInComponent}/>

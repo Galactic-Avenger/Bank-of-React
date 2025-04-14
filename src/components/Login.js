@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 
+// Component to simulate user login with redirect to profile
 class LogIn extends Component {
   constructor (props) {  // Create and initialize state
     super(props)

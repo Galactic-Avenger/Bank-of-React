@@ -6,8 +6,9 @@ Note: You need to work on this file for the Assignment.
 ==================================================*/
 import {Link} from 'react-router-dom';
 
+// Component to display and add new debit transactions
 const Debits = (props) => {
-  // Helper to render the list of debit items
+  // Helper function to render the list of debit items
   const debitsView = () => {
     return props.debits.map((debit, index) => {
       const date = debit.date.slice(0,10);  // Extract 'yyyy-mm-dd'
@@ -27,7 +28,7 @@ const Debits = (props) => {
     e.preventDefault();
     const newDebit = {
       description: e.target.description.value,
-      amount: parseFloat(e.target.amount.value),
+      amount: Math.round(parseFloat(e.target.amount.value) * 100) / 100,
       date: new Date().toISOString()
     };
     props.addDebit(newDebit);
@@ -54,7 +55,7 @@ const Debits = (props) => {
         </div>
         <div>
           <label>Amount: </label>
-          <input type="number" step="0.01" name="amount" placeholder="e.g. 50" required />
+          <input type="number" step="any" name="amount" placeholder="e.g. 50" required />
         </div>
         <button type="submit">Add Debit</button>
       </form>

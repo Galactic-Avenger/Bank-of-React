@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Bank-of-React/static/css/main.6bf864ac.css",
+    "main.js": "/Bank-of-React/static/js/main.a906a0ec.js",
+    "static/js/453.d81f9453.chunk.js": "/Bank-of-React/static/js/453.d81f9453.chunk.js",
+    "index.html": "/Bank-of-React/index.html",
+    "main.6bf864ac.css.map": "/Bank-of-React/static/css/main.6bf864ac.css.map",
+    "main.a906a0ec.js.map": "/Bank-of-React/static/js/main.a906a0ec.js.map",
+    "453.d81f9453.chunk.js.map": "/Bank-of-React/static/js/453.d81f9453.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6bf864ac.css",
+    "static/js/main.a906a0ec.js"
+  ]
+}

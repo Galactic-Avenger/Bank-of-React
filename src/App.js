@@ -6,6 +6,7 @@ It contains the top-level state.
 ==================================================*/
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+import './App.css';
 
 // Import other components
 import Home from './components/Home';
@@ -77,16 +78,32 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 
+  // Get the current time and return a greeting based on the time of day
+  getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) {
+      return 'Good morning';
+    }
+    else if (hour < 18) {
+      return 'Good afternoon';
+    }
+    else {
+      return 'Good evening';
+    }
+  }
+
   // Create Routes and React elements to be rendered using React components
   render() {  
+    // Get the greeting message
+    const greeting = this.getGreeting();
     // Create React elements and pass input props to components
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance} />)
     const UserProfileComponent = () => (
-      <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />
+      <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} greeting = {greeting} />
     )
-    const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
-    const CreditsComponent = () => (<Credits credits={this.state.credits} addCredit={this.addCredit} accountBalance={this.state.accountBalance} />) 
-    const DebitsComponent = () => (<Debits debits={this.state.debits} addDebit={this.addDebit} accountBalance={this.state.accountBalance} />) 
+    const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} greeting = {greeting} />)
+    const CreditsComponent = () => (<Credits credits={this.state.credits} addCredit={this.addCredit} accountBalance={this.state.accountBalance} greeting = {greeting} />) 
+    const DebitsComponent = () => (<Debits debits={this.state.debits} addDebit={this.addDebit} accountBalance={this.state.accountBalance} greeting = {greeting} />) 
 
     // Important: Include the "basename" in Router, which is needed for deploying the React app to GitHub Pages
     return (

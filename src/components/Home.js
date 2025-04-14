@@ -16,6 +16,8 @@ class Home extends Component {
         <img src="https://picsum.photos/200/200" alt="bank"/>
 
         <h1>Bank of React</h1>
+        {/* Greeting message */}
+        <h2>{this.props.greeting}, {this.state.user.userName}!</h2>
 
         {/* Navigation Links to different views */}
         <Link to="/userProfile">User Profile</Link>

@@ -36,6 +36,8 @@ const Credits = (props) => {
   return (
     <div>
       <h1>Credits</h1>
+      {/* Greeting message */}
+      <h2>{this.props.greeting}, {this.state.user.userName}!</h2>
 
       {/* Show current account balance */}
       <h3>Account Balance: ${props.accountBalance.toFixed(2)}</h3>

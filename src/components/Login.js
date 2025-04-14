@@ -46,7 +46,8 @@ class LogIn extends Component {
     return (
       <div>
         <h1>Login</h1>
-        
+        {/* Greeting message */}
+        <h2>{this.props.greeting}, {this.state.user.userName}!</h2>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>User Name</label>

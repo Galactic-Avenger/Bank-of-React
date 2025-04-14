@@ -13,6 +13,8 @@ class UserProfile extends Component {
     return (
       <div>
         <h1>User Profile</h1>
+        {/* Greeting message */}
+        <h2>{this.props.greeting}, {this.props.userName}!</h2>
         
         {/* Show user data passed from parent (App.js) */}
         <div>Username: {this.props.userName}</div>

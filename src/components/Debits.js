@@ -38,6 +38,8 @@ const Debits = (props) => {
   return (
     <div>
       <h1>Debits</h1>
+      {/* Greeting message */}
+      <h2>{this.props.greeting}, {this.state.user.userName}!</h2>
 
       {/* Display current account balance, rounded to 2 decimals */}
       <h3>Account Balance: ${props.accountBalance.toFixed(2)}</h3>

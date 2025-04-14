@@ -5,7 +5,7 @@ The LogIn component is used to demonstrate the use of Redirect.
 Note: You don't need to work on this file for the Assignment.
 ==================================================*/
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 
 // Component to simulate user login with redirect to profile
@@ -39,7 +39,7 @@ class LogIn extends Component {
   render () {
     // Redirect to "User Profile" page when "Log In" button is clicked
     if (this.state.redirect) {  
-      return (<Redirect to="/userProfile"/>);
+      return (<Navigate to="/userProfile"/>);
     }
 
     // Render the login form (and call "handleSubmit" method when "Log In" button is clicked to submit form)

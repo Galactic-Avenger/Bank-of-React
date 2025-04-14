@@ -5,7 +5,7 @@ This is the top-level component of the app.
 It contains the top-level state.
 ==================================================*/
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import './App.css';
 
 // Import other components
@@ -99,15 +99,7 @@ class App extends Component {
   // Create Routes and React elements to be rendered using React components
   render() {  
     // Get the greeting message
-    const greeting = this.getGreeting();
-    // Create React elements and pass input props to components
-    const HomeComponent = () => (<Home accountBalance={this.state.accountBalance} />)
-    const UserProfileComponent = () => (
-      <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} greeting = {greeting} />
-    )
-    const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} greeting = {greeting} />)
-    const CreditsComponent = () => (<Credits credits={this.state.credits} addCredit={this.addCredit} accountBalance={this.state.accountBalance} greeting = {greeting} />) 
-    const DebitsComponent = () => (<Debits debits={this.state.debits} addDebit={this.addDebit} accountBalance={this.state.accountBalance} greeting = {greeting} />) 
+    const greeting = this.getGreeting(); 
 
     // Important: Include the "basename" in Router, which is needed for deploying the React app to GitHub Pages
     return (
@@ -124,11 +116,40 @@ class App extends Component {
         </nav>
 
         {/* Routes */}
-          <Route exact path="/" render={HomeComponent}/>
-          <Route exact path="/userProfile" render={UserProfileComponent}/>
-          <Route exact path="/login" render={LogInComponent}/>
-          <Route exact path="/credits" render={CreditsComponent}/>
-          <Route exact path="/debits" render={DebitsComponent}/>
+        <Routes>
+          <Route path="/" element={<Home accountBalance={this.state.accountBalance} />} />
+          <Route path="/userProfile" element={
+            <UserProfile 
+              userName={this.state.currentUser.userName}
+              memberSince={this.state.currentUser.memberSince}
+              greeting={greeting}
+            />} 
+          />
+          <Route path="/login" element={
+            <LogIn 
+              user={this.state.currentUser}
+              mockLogIn={this.mockLogIn}
+              greeting={greeting}
+            />} 
+          />
+          <Route path="/credits" element={
+            <Credits 
+              credits={this.state.credits}
+              addCredit={this.addCredit}
+              accountBalance={this.state.accountBalance}
+              greeting={greeting}
+            />} 
+          />
+          <Route path="/debits" element={
+            <Debits 
+              debits={this.state.debits}
+              addDebit={this.addDebit}
+              accountBalance={this.state.accountBalance}
+              greeting={greeting}
+            />} 
+          />
+        </Routes>
+
         </div>
       </Router>
     );

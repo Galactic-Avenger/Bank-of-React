@@ -40,10 +40,10 @@ const Credits = (props) => {
       {/* Show current account balance */}
       <h3>Account Balance: ${props.accountBalance.toFixed(2)}</h3>
 
-      {/* Credit list */}
+      {/* The Credit list */}
       <ul>{creditsView()}</ul>
 
-      {/* Credit entry form */}
+      {/* The Credit entry form */}
       <form onSubmit={handleSubmit}>
         <div>
           <label>Description:</label>
